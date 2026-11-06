@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>梅文秀 · 个人作品集 V2 | 中国医学论坛报社</title>
+<style>
+  :root{
+    --accent:#A83232;
+    --accent-soft:#F7EDED;
+    --ink:#2B2B2B;
+    --ink-2:#5A5A5A;
+    --ink-3:#8A8A8A;
+    --line:#EAEAEA;
+    --bg:#FFFFFF;
+    --bg-soft:#FAFAF8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    background:var(--bg);color:var(--ink);
+    line-height:1.75;font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:"Noto Serif SC","Songti SC",SimSun,serif;}
+  .container{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1080px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-brand{font-weight:700;letter-spacing:.05em;color:var(--accent);}
+  .nav-brand .v{font-size:11px;vertical-align:super;background:var(--accent);color:#fff;border-radius:6px;padding:1px 6px;margin-left:6px;letter-spacing:.1em;}
+  .nav-links{display:flex;gap:24px;font-size:14px;flex-wrap:wrap;}
+  .nav-links a{color:var(--ink-2);text-decoration:none;transition:color .2s;}
+  .nav-links a:hover{color:var(--accent);}
+
+  .hero{padding:88px 0 68px;background:radial-gradient(circle at 85% 15%, var(--accent-soft) 0%, transparent 45%);}
+  .hero-grid{display:flex;align-items:center;gap:60px;flex-wrap:wrap;}
+  .avatar-wrap{flex-shrink:0;position:relative;}
+  .avatar{width:200px;height:200px;border-radius:50%;object-fit:cover;border:5px solid #fff;box-shadow:0 8px 32px rgba(0,0,0,.12);}
+  .avatar-ring{position:absolute;inset:-12px;border-radius:50%;border:1px solid var(--line);}
+  .hero-text{flex:1;min-width:300px;}
+  .hero-kicker{display:inline-block;font-size:13px;letter-spacing:.2em;color:var(--accent);border:1px solid var(--accent);padding:4px 14px;border-radius:999px;margin-bottom:20px;}
+  h1.name{font-size:42px;font-weight:700;letter-spacing:.06em;line-height:1.3;}
+  h1.name .pen{font-size:18px;font-weight:400;color:var(--ink-3);margin-left:14px;letter-spacing:.1em;}
+  .hero-title{font-size:17px;color:var(--ink-2);margin-top:10px;}
+  .hero-title b{color:var(--ink);font-weight:600;}
+  .hero-desc{margin-top:22px;color:var(--ink-2);font-size:15.5px;max-width:640px;}
+  .hero-contact{display:inline-block;margin-top:22px;font-size:14.5px;color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(168,50,50,.28);padding-bottom:2px;transition:opacity .2s;}
+  .hero-contact:hover{opacity:.7;}
+  .hero-stats{display:flex;gap:40px;margin-top:30px;flex-wrap:wrap;}
+  .stat .num{font-size:28px;font-weight:700;color:var(--accent);}
+  .stat .lab{font-size:13px;color:var(--ink-3);letter-spacing:.05em;}
+
+  section{padding:72px 0;}
+  section.alt{background:var(--bg-soft);}
+  .sec-head{margin-bottom:44px;}
+  .sec-eyebrow{font-size:13px;letter-spacing:.25em;color:var(--accent);font-weight:600;}
+  h2.sec-title{font-size:28px;font-weight:700;margin-top:8px;letter-spacing:.04em;}
+  .sec-line{width:48px;height:3px;background:var(--accent);margin-top:14px;border-radius:2px;}
+  .sec-note{margin-top:12px;color:var(--ink-3);font-size:14px;max-width:720px;}
+
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .skill{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px 24px;transition:transform .2s, box-shadow .2s;}
+  section.alt .skill{background:#fff;}
+  .skill:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.06);}
+  .skill h3{font-size:16px;font-weight:600;margin-bottom:6px;}
+  .skill p{font-size:13.5px;color:var(--ink-2);}
+
+  /* ---------- 专家滑动墙 ---------- */
+  .carousel{overflow:hidden;position:relative;padding:8px 0;}
+  .carousel::before,.carousel::after{
+    content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;
+  }
+  .carousel::before{left:0;background:linear-gradient(to right, #fff, transparent);}
+  .carousel::after{right:0;background:linear-gradient(to left, #fff, transparent);}
+  .car-track{display:flex;gap:22px;width:max-content;animation:carScroll 70s linear infinite;}
+  .carousel:hover .car-track{animation-play-state:paused;}
+  @keyframes carScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .expert{
+    width:300px;flex-shrink:0;background:#fff;border:1px solid var(--line);
+    border-radius:14px;overflow:hidden;transition:box-shadow .2s, transform .2s;
+  }
+  .expert:hover{box-shadow:0 12px 30px rgba(0,0,0,.10);transform:translateY(-3px);}
+  .expert .ph{width:100%;height:225px;object-fit:cover;display:block;}
+  .expert .info{padding:16px 18px 18px;}
+  .expert .nm{font-size:17px;font-weight:700;}
+  .expert .nm .intl{font-size:12px;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:1px 8px;margin-left:8px;vertical-align:2px;}
+  .expert .hp{font-size:13.5px;color:var(--ink-2);margin-top:4px;}
+  .expert .ti{font-size:12.5px;color:var(--accent);margin-top:6px;line-height:1.6;}
+
+  /* ---------- 视频栏目 ---------- */
+  .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .vcard{
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;
+    text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;
+    transition:transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .vcard:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 10px 28px rgba(0,0,0,.07);}
+  .vcard .tag{align-self:flex-start;font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 12px;}
+  .vcard h4{font-size:15.5px;font-weight:600;line-height:1.6;}
+  .vcard .views{font-size:13px;color:var(--ink-2);}
+  .vcard .views b{color:var(--accent);}
+  .vcard .go{margin-top:auto;font-size:13px;color:var(--ink-3);}
+  .vcard:hover .go{color:var(--accent);}
+
+  /* ---------- 科普项目 ---------- */
+  .proj{
+    background:#fff;border:1px solid var(--line);border-radius:14px;padding:36px;
+    display:flex;gap:36px;align-items:center;flex-wrap:wrap;
+  }
+  .proj .badge{
+    flex-shrink:0;width:120px;height:120px;border-radius:24px;background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;
+  }
+  .proj .badge .b1{font-size:30px;font-weight:800;color:var(--accent);font-family:"Noto Serif SC",SimSun,serif;}
+  .proj .badge .b2{font-size:12px;color:var(--accent);letter-spacing:.1em;}
+  .proj .txt{flex:1;min-width:280px;}
+  .proj h3{font-size:19px;font-weight:700;margin-bottom:10px;}
+  .proj p{font-size:14.5px;color:var(--ink-2);}
+  .proj .btn{
+    display:inline-block;margin-top:18px;background:var(--accent);color:#fff;
+    text-decoration:none;font-size:14px;padding:10px 26px;border-radius:999px;transition:opacity .2s;
+  }
+  .proj .btn:hover{opacity:.85;}
+
+  /* ---------- 作品 ---------- */
+  .cat{margin-bottom:56px;}
+  .cat:last-child{margin-bottom:0;}
+  .cat-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;flex-wrap:wrap;}
+  .cat-head h3{font-size:20px;font-weight:700;}
+  .cat-count{font-size:12.5px;color:var(--accent);background:var(--accent-soft);padding:2px 12px;border-radius:999px;}
+  .cat-note{font-size:13px;color:var(--ink-3);margin-left:auto;}
+  .works-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .work{
+    display:flex;flex-direction:column;justify-content:space-between;
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;
+    text-decoration:none;color:inherit;transition:transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .work:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 10px 28px rgba(0,0,0,.07);}
+  .work-meta{display:flex;gap:10px;font-size:12px;color:var(--ink-3);margin-bottom:10px;flex-wrap:wrap;}
+  .work-meta .plat{color:var(--accent);font-weight:600;}
+  .work h4{font-size:15.5px;font-weight:600;line-height:1.6;}
+  .work .go{margin-top:14px;font-size:13px;color:var(--ink-3);}
+  .work:hover .go{color:var(--accent);}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--ink-3);font-size:13.5px;}
+  footer .strong{color:var(--ink-2);font-weight:600;}
+  footer .pen-sign{font-family:"Noto Serif SC",SimSun,serif;letter-spacing:.15em;margin-top:6px;}
+
+  @media (max-width:900px){
+    .skills-grid,.video-grid{grid-template-columns:1fr 1fr;}
+    .works-grid{grid-template-columns:1fr;}
+    .expert{width:250px;}
+    .expert .ph{height:190px;}
+  }
+  @media (max-width:600px){
+    .skills-grid,.video-grid{grid-template-columns:1fr;}
+    h1.name{font-size:32px;}
+    .hero{padding:56px 0 44px;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">梅文秀 · 作品集<span class="v">V2</span></div>
+    <div class="nav-links">
+      <a href="#about">关于我</a>
+      <a href="#experts">专家网络</a>
+      <a href="#videos">视频栏目</a>
+      <a href="#project">科普案例</a>
+      <a href="#works">作品展示</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="container hero-grid">
+    <div class="avatar-wrap">
+      <div class="avatar-ring"></div>
+      <img class="avatar" src="photos/avatar.png" alt="梅文秀个人照片">
+    </div>
+    <div class="hero-text">
+      <span class="hero-kicker">PORTFOLIO · 个人作品集</span>
+      <h1 class="name serif">梅文秀<span class="pen">笔名 / 天之涯</span></h1>
+      <p class="hero-title"><b>中国医学论坛报社 · 编辑</b> ｜ 医学媒体采编 / 学术内容策划 / 项目管理</p>
+      <p class="hero-desc">拥有多年医学媒体采编、学术内容策划与新媒体平台运营经验，擅长医学文稿撰写、外文医学文献编译与学术内容质控，能够独立完成前沿循证资料查证与双语内容加工，具备扎实的医学英文读写与海外专家沟通协作能力。</p>
+      <a class="hero-contact" href="mailto:wenxiu_0713@163.com">联系邮箱：wenxiu_0713@163.com</a>
+      <div class="hero-stats">
+        <div class="stat"><div class="num">10<span style="font-size:16px">年</span></div><div class="lab">从业经验</div></div>
+        <div class="stat"><div class="num">2600<span style="font-size:16px">万+</span></div><div class="lab">栏目累计观看</div></div>
+        <div class="stat"><div class="num">15<span style="font-size:16px">+</span></div><div class="lab">代表作品</div></div>
+        <div class="stat"><div class="num">9</div><div class="lab">策划视频栏目</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 专业能力 ============ -->
+<section class="alt" id="about">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">ABOUT ME</div>
+      <h2 class="sec-title serif">专业能力</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill"><h3>医学文稿撰写</h3><p>会议报道、专家访谈、综述与科普多体裁写作，兼顾学术严谨与可读性</p></div>
+      <div class="skill"><h3>外文文献编译</h3><p>独立完成前沿循证资料查证与双语内容加工，医学英文读写扎实</p></div>
+      <div class="skill"><h3>海外专家协作</h3><p>独立对接国际知名学者完成约稿、专访与稿件审阅沟通</p></div>
+      <div class="skill"><h3>学术会议报道</h3><p>深入 ESMO、ASCO GI、CSCO、CODHy、CSE 等国际国内学术会议现场第一线</p></div>
+      <div class="skill"><h3>新媒体运营</h3><p>微信公众号多矩阵运营经验，长图、漫画等融媒体形式策划制作</p></div>
+      <div class="skill"><h3>专家网络与项目管理</h3><p>长期维护内分泌、肾病、肿瘤等领域核心专家，独立策划并管理系列医学栏目项目</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 专家网络（滑动墙） ============ -->
+<section id="experts">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">EXPERT NETWORK</div>
+      <h2 class="sec-title serif">医学专家维护</h2>
+      <div class="sec-line"></div>
+      <p class="sec-note">长期对接与维护的国内外专家（部分），照片均摄于采访、约稿与学术会议现场。滑动浏览，悬停可暂停。</p>
+    </div>
+  </div>
+  <div class="carousel">
+    <div class="car-track" id="carTrack">
+      <!-- 第一组 -->
+      <div class="expert"><img class="ph" src="photos/p01.jpg" alt="Luc Van Gaal 教授" loading="lazy"><div class="info"><div class="nm">Luc Van Gaal 教授<span class="intl">国际</span></div><div class="hp">比利时</div><div class="ti">比利时内分泌学会与比利时糖尿病协会前任主席</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p02.jpg" alt="Yehuda Handelsman 教授" loading="lazy"><div class="info"><div class="nm">Yehuda Handelsman 教授<span class="intl">国际</span></div><div class="hp">美国</div><div class="ti">美国临床内分泌医师协会与美国内分泌学会前任主席</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p03.jpg" alt="母义明教授" loading="lazy"><div class="info"><div class="nm">母义明 教授</div><div class="hp">解放军总医院第一医学中心</div><div class="ti">中国医师协会内分泌代谢医师分会会长</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p04.jpg" alt="蔡广研教授" loading="lazy"><div class="info"><div class="nm">蔡广研 教授</div><div class="hp">解放军总医院第一医学中心</div><div class="ti">中华医学会肾脏病学分会主任委员</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p05.jpg" alt="蒋更如教授" loading="lazy"><div class="info"><div class="nm">蒋更如 教授</div><div class="hp">上海新华医院</div><div class="ti">中国医师协会肾脏内科医师分会副会长</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p06.jpg" alt="刘必成教授" loading="lazy"><div class="info"><div class="nm">刘必成 教授</div><div class="hp">东南大学附属中大医院 · 肾脏病研究所所长</div><div class="ti">中华医学会肾脏病学会副主任委员</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p07.jpg" alt="林洪丽教授" loading="lazy"><div class="info"><div class="nm">林洪丽 教授</div><div class="hp">大连医科大学附属第一医院</div><div class="ti">中华医学会肾脏病学分会副主任委员</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p08.jpg" alt="何娅妮教授" loading="lazy"><div class="info"><div class="nm">何娅妮 教授</div><div class="hp">陆军特色医学中心</div><div class="ti">中华医学会肾脏病学会副主任委员</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p09.jpg" alt="刘铭教授" loading="lazy"><div class="info"><div class="nm">刘铭 教授</div><div class="hp">天津医科大学总医院 · 内分泌代谢科</div><div class="ti">中华内分泌学会副主任委员</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p10.jpg" alt="邹大进教授" loading="lazy"><div class="info"><div class="nm">邹大进 教授</div><div class="hp">上海交通大学附属同仁医院 · 内分泌科</div><div class="ti">内分泌代谢病临床与科普专家</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p11.jpg" alt="何志嵩教授" loading="lazy"><div class="info"><div class="nm">何志嵩 教授</div><div class="hp">北京大学第一医院</div><div class="ti">CSCO 尿路上皮癌（UC）专委会主任委员</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p12.jpg" alt="崔传亮教授" loading="lazy"><div class="info"><div class="nm">崔传亮 教授</div><div class="hp">北京大学肿瘤医院</div><div class="ti">CSCO 尿路上皮癌（UC）专委会秘书</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p13.jpg" alt="第壹现场栏目主持" loading="lazy"><div class="info"><div class="nm">第壹现场 · 栏目主持</div><div class="hp">2024 CSCO 学术年会（厦门）</div><div class="ti">担任大会现场访谈栏目主持人</div></div></div>
+      <!-- 第二组（复制用于无缝循环） -->
+      <div class="expert"><img class="ph" src="photos/p01.jpg" alt="" loading="lazy"><div class="info"><div class="nm">Luc Van Gaal 教授<span class="intl">国际</span></div><div class="hp">比利时</div><div class="ti">比利时内分泌学会与比利时糖尿病协会前任主席</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p02.jpg" alt="" loading="lazy"><div class="info"><div class="nm">Yehuda Handelsman 教授<span class="intl">国际</span></div><div class="hp">美国</div><div class="ti">美国临床内分泌医师协会与美国内分泌学会前任主席</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p03.jpg" alt="" loading="lazy"><div class="info"><div class="nm">母义明 教授</div><div class="hp">解放军总医院第一医学中心</div><div class="ti">中国医师协会内分泌代谢医师分会会长</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p04.jpg" alt="" loading="lazy"><div class="info"><div class="nm">蔡广研 教授</div><div class="hp">解放军总医院第一医学中心</div><div class="ti">中华医学会肾脏病学分会主任委员</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p05.jpg" alt="" loading="lazy"><div class="info"><div class="nm">蒋更如 教授</div><div class="hp">上海新华医院</div><div class="ti">中国医师协会肾脏内科医师分会副会长</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p06.jpg" alt="" loading="lazy"><div class="info"><div class="nm">刘必成 教授</div><div class="hp">东南大学附属中大医院 · 肾脏病研究所所长</div><div class="ti">中华医学会肾脏病学会副主任委员</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p07.jpg" alt="" loading="lazy"><div class="info"><div class="nm">林洪丽 教授</div><div class="hp">大连医科大学附属第一医院</div><div class="ti">中华医学会肾脏病学分会副主任委员</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p08.jpg" alt="" loading="lazy"><div class="info"><div class="nm">何娅妮 教授</div><div class="hp">陆军特色医学中心</div><div class="ti">中华医学会肾脏病学会副主任委员</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p09.jpg" alt="" loading="lazy"><div class="info"><div class="nm">刘铭 教授</div><div class="hp">天津医科大学总医院 · 内分泌代谢科</div><div class="ti">中华内分泌学会副主任委员</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p10.jpg" alt="" loading="lazy"><div class="info"><div class="nm">邹大进 教授</div><div class="hp">上海交通大学附属同仁医院 · 内分泌科</div><div class="ti">内分泌代谢病临床与科普专家</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p11.jpg" alt="" loading="lazy"><div class="info"><div class="nm">何志嵩 教授</div><div class="hp">北京大学第一医院</div><div class="ti">CSCO 尿路上皮癌（UC）专委会主任委员</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p12.jpg" alt="" loading="lazy"><div class="info"><div class="nm">崔传亮 教授</div><div class="hp">北京大学肿瘤医院</div><div class="ti">CSCO 尿路上皮癌（UC）专委会秘书</div></div></div>
+      <div class="expert"><img class="ph" src="photos/p13.jpg" alt="" loading="lazy"><div class="info"><div class="nm">第壹现场 · 栏目主持</div><div class="hp">2024 CSCO 学术年会（厦门）</div><div class="ti">担任大会现场访谈栏目主持人</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 视频栏目 ============ -->
+<section class="alt" id="videos">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">VIDEO PROGRAMS</div>
+      <h2 class="sec-title serif">医学视频栏目策划</h2>
+      <div class="sec-line"></div>
+      <p class="sec-note">策划并落地的系列医学课程与直播栏目，覆盖心血管、肾病、重症等领域，累计观看量超 2600 万人次。</p>
+    </div>
+    <div class="video-grid">
+      <a class="vcard" href="https://apps.medtrib.cn/media/phone/wx/liveClassroom/themepro/detail/28b6367f-6b31-4cad-ba71-fabc8c3e113e.html" target="_blank" rel="noopener">
+        <span class="tag">心血管</span>
+        <h4>手把手教你学心脏超声精品系列课</h4>
+        <div class="views">累积观看量 <b>120万+</b> 人次</div>
+        <div class="go">查看栏目 →</div>
+      </a>
+      <a class="vcard" href="https://apps.medtrib.cn/media/phone/wx/liveClassroom/theme/detail/a28c4bd4-0eba-4412-8655-1248fbcf9be1.html" target="_blank" rel="noopener">
+        <span class="tag">心血管</span>
+        <h4>心电 100 问</h4>
+        <div class="views">累积观看量 <b>1000万+</b> 人次</div>
+        <div class="go">查看栏目 →</div>
+      </a>
+      <a class="vcard" href="https://apps.medtrib.cn/media/phone/wx/liveClassroom/theme/detail/5e4834f9-dcb2-4337-8ada-4f86c4d9f828.html" target="_blank" rel="noopener">
+        <span class="tag">心血管</span>
+        <h4>中日医院心内科疑难病例讨论</h4>
+        <div class="views">累积观看量 <b>200万+</b> 人次</div>
+        <div class="go">查看栏目 →</div>
+      </a>
+      <a class="vcard" href="https://apps.medtrib.cn/media/phone/wx/liveClassroom/theme/detail/9cf37b4f-d1b5-4418-b30c-b7cd8b3d2ac9.html" target="_blank" rel="noopener">
+        <span class="tag">肾病</span>
+        <h4>显微镜下的美——跟着刘少军老师学肾脏病理</h4>
+        <div class="views">累积观看量 <b>260万+</b> 人次</div>
+        <div class="go">查看栏目 →</div>
+      </a>
+      <a class="vcard" href="https://mp.weixin.qq.com/s/uaVeZHXiVMSX2XQub5SZ2w" target="_blank" rel="noopener">
+        <span class="tag">肾病</span>
+        <h4>18 天血管通路训练营</h4>
+        <div class="views">系列训练营项目</div>
+        <div class="go">查看栏目 →</div>
+      </a>
+      <a class="vcard" href="https://mp.weixin.qq.com/s/aUbD1-tB3_czCp4G4EfqeQ" target="_blank" rel="noopener">
+        <span class="tag">肾病</span>
+        <h4>72 天肾病实用技能综合提升计划集训营</h4>
+        <div class="views">系列训练营项目</div>
+        <div class="go">查看栏目 →</div>
+      </a>
+      <a class="vcard" href="https://apps.medtrib.cn/appstatic/cmtapp/#/series?liveUuid=04fa0dee-1bd1-4423-baf6-b385e49f01d3&amp;classRoomId=&amp;type=5&amp;apm=media" target="_blank" rel="noopener">
+        <span class="tag">重症</span>
+        <h4>机械通气临床实战入门课</h4>
+        <div class="views">累计观看量 <b>370万+</b> 人次</div>
+        <div class="go">查看栏目 →</div>
+      </a>
+      <a class="vcard" href="https://apps.medtrib.cn/appstatic/cmtapp/#/series?liveUuid=e8795ebf-ee96-45b4-a12e-75a56d30ddf0&amp;classRoomId=&amp;type=5&amp;apm=media" target="_blank" rel="noopener">
+        <span class="tag">重症</span>
+        <h4>值班常见危重症救治之协和经验</h4>
+        <div class="views">累积观看量 <b>650万+</b> 人次</div>
+        <div class="go">查看栏目 →</div>
+      </a>
+      <a class="vcard" href="https://mp.weixin.qq.com/s/XQwTLMp3q0eD7-mMTjHMag" target="_blank" rel="noopener">
+        <span class="tag">重症</span>
+        <h4>23 天重症机械通气训练营</h4>
+        <div class="views">系列训练营项目</div>
+        <div class="go">查看栏目 →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 科普项目案例 ============ -->
+<section id="project">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">CASE STUDY</div>
+      <h2 class="sec-title serif">科普项目案例</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="proj">
+      <div class="badge"><span class="b1">EPIC</span><span class="b2">泌境</span></div>
+      <div class="txt">
+        <h3>EPIC 泌境——内分泌科普教育与临床规范化诊疗实践风采展示项目</h3>
+        <p>聚焦内分泌科青年医生群体，以真实临床病例为切入点，提炼核心临床知识点，转化为普通大众可理解的轻量化科普内容。从选题策划、专家邀约到内容审核与上线运营全流程执行。</p>
+        <a class="btn" href="https://apps.medtrib.cn/media/phone/activity-activitySite-index.html?activitySite=templateView&amp;vmUuid=c46bcfe11-8a08-4080-8044-0f5396a5451d&amp;eleUuid=10004742e978-22a8-4e20-8172-2114a6887b47&amp;androidSinglePage=1" target="_blank" rel="noopener">查看项目页面 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 作品展示 ============ -->
+<section class="alt" id="works">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">SELECTED WORKS</div>
+      <h2 class="sec-title serif">作品展示</h2>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head">
+        <h3 class="serif">外宾访谈报道</h3>
+        <span class="cat-count">3 篇</span>
+        <span class="cat-note">独立采访国际知名学者，稿件经外籍专家本人审阅</span>
+      </div>
+      <div class="works-grid">
+        <a class="work" href="https://mp.weixin.qq.com/s/XXVkjaYpeLV1O4ZPtWPuSA" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报今日内分泌</span><span>2025 · 06</span><span>CODHy China</span></div>
+            <h4>CODHy速递 | NEJM重磅发布，CONFIDENCE研究国内首次公开秀：非奈利酮为T2D合并CKD患者早期联合治疗带来循证突破</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+        <a class="work" href="https://mp.weixin.qq.com/s/N2xA4E8G8pOcJPNPjd1QFA" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报今日内分泌</span><span>2025 · 09</span><span>CSE 大会</span></div>
+            <h4>2025 CSE速递 | 糖尿病并发症专场精华速递：T2D相关慢性肾病干预关口需前移！（Luc Van Gaal 教授专访）</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+        <a class="work" href="https://mp.weixin.qq.com/s/4LKg2DK3ebsJBpj1GSbuLw" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报今日内分泌</span><span>2025 · 06</span><span>CODHy China</span></div>
+            <h4>CODHy速递 | 里程碑式CONFIDENCE研究：联合治疗越早，T2D合并CKD患者心肾获益越大</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head">
+        <h3 class="serif">国际会议报道</h3>
+        <span class="cat-count">6 篇</span>
+        <span class="cat-note">ESMO / ESMO Asia / ASCO GI 等国际会事现场与前沿速递</span>
+      </div>
+      <div class="works-grid">
+        <a class="work" href="https://mp.weixin.qq.com/s/Upl3fkbjSpaMR0h3YyceQw" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报今日肿瘤</span><span>2024 · 09</span><span>ESMO 年会</span></div>
+            <h4>ESMO现场速递：吴一龙、Tony Mok教授解读CROWN研究5年随访亚洲亚组数据，ALK阳性NSCLC一线优选方案再添新证！</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+        <a class="work" href="https://mp.weixin.qq.com/s/yNk2rWryGBtxq7K41d-UcA" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报今日肿瘤</span><span>2025 · 10</span><span>ESMO</span></div>
+            <h4>ESMO胃癌前沿速递丨张艳桥教授、Shitara教授、赵林教授共探晚期胃癌精准治疗新格局</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+        <a class="work" href="https://mp.weixin.qq.com/s/7lRvBjB8ngSOMiylUg5aXQ" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报今日肿瘤</span><span>2025 · 12</span><span>ESMO Asia</span></div>
+            <h4>2025 ESMO Asia前沿速递 | 李进教授携手Kei Muro、Su Pin CHOO等大咖领衔共论：胃癌精准治疗亚洲经验</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+        <a class="work" href="https://mp.weixin.qq.com/s/ibTJlXhMd0x8TniovOyztA" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报今日肿瘤</span><span>2026 · 01</span><span>ASCO GI</span></div>
+            <h4>2026 ASCO GI前沿速递 | 王峰教授、Rha教授、Shitara教授聚焦三大关键靶点，共绘晚期胃癌精准治疗新蓝图</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+        <a class="work" href="https://mp.weixin.qq.com/s/wE9O60MXgF-GTfCgW5qv3A" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报今日肿瘤</span><span>2026</span><span>ESMO 年会</span></div>
+            <h4>2026 ESMO | 陶运淦教授：从IDEAL研究到GORTEC China：探索局部晚期头颈部鳞癌治疗新策略</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+        <a class="work" href="https://mp.weixin.qq.com/s/5tfoiizBSEXb_Cgd37GtQw" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报今日肿瘤</span><span>【医施荟】</span></div>
+            <h4>沈琳教授、周军教授解读 | 首部《胰腺癌系统治疗亚洲专家共识》重磅发布，引领"癌王"系统治疗新格局！</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head">
+        <h3 class="serif">医学长图 / 漫画</h3>
+        <span class="cat-count">3 篇</span>
+        <span class="cat-note">融媒体内容策划与制作，将循证证据可视化</span>
+      </div>
+      <div class="works-grid">
+        <a class="work" href="https://mp.weixin.qq.com/s/eX3sRmB40B93P-oqO_vLsA" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报</span><span>益图读懂</span></div>
+            <h4>益图读懂 | 关注TIR，探讨德谷胰岛素利拉鲁肽临床获益</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+        <a class="work" href="https://mp.weixin.qq.com/s/GRY9F6JS-e79HHhNrCGMKQ" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报</span><span>益图读懂</span></div>
+            <h4>益图读懂 | 简易转换：德谷胰岛素利拉鲁肽用于短期胰岛素强化治疗后续方案之循证</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+        <a class="work" href="https://mp.weixin.qq.com/s/EsbEl7m1dw6L_0JMy2fyXw" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报</span><span>指南更新</span></div>
+            <h4>2024版CDS指南和2025版ADA指南重磅更新！</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head">
+        <h3 class="serif">医学综述类</h3>
+        <span class="cat-count">3 篇</span>
+        <span class="cat-note">深度编译与专题综述，体现循证查证与双语加工能力</span>
+      </div>
+      <div class="works-grid">
+        <a class="work" href="https://mp.weixin.qq.com/s/4gnKEIWQX2iQWtmmIhFz7w" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报今日肾病</span><span>2026 · 06</span><span>ERA 大会</span></div>
+            <h4>nsMRA缘何频见顶刊？深耕抗炎抗纤维化机制，重绘广泛CKD诊疗版图</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+        <a class="work" href="https://www.cmtopdr.com/post/detail/dd7784bb-9486-4315-aead-1e095a18773c.html" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">壹生 · 中国医学论坛报社</span><span>2025 · 06 · 03</span></div>
+            <h4>慢性肾脏病全程管理的"宁波模式"创新实践——访阮列敏教授、边学燕教授和马建伟教授</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+        <a class="work" href="https://mp.weixin.qq.com/s/e5AK-sg_vbpJU1EAdbC0VQ" target="_blank" rel="noopener">
+          <div>
+            <div class="work-meta"><span class="plat">中国医学论坛报</span><span>卫生经济学专题</span></div>
+            <h4>临床难以承受之重——导尿管相关尿路感染的经济学分析</h4>
+          </div>
+          <div class="go">阅读原文 →</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="strong">梅文秀 ｜ 中国医学论坛报社 编辑</div>
+  <div style="margin-top:10px">联系方式：<a href="mailto:wenxiu_0713@163.com" style="color:var(--accent);text-decoration:none">wenxiu_0713@163.com</a></div>
+  <div class="pen-sign">—— 天之涯 ——</div>
+</footer>
+
+</body>
+</html>
