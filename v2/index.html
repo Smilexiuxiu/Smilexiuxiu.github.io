@@ -67,16 +67,15 @@
   .skill h3{font-size:16px;font-weight:600;margin-bottom:6px;}
   .skill p{font-size:13.5px;color:var(--ink-2);}
 
-  /* ---------- 专家滑动墙 ---------- */
-  .carousel{overflow:hidden;position:relative;padding:8px 0;}
-  .carousel::before,.carousel::after{
-    content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;
-  }
-  .carousel::before{left:0;background:linear-gradient(to right, #fff, transparent);}
-  .carousel::after{right:0;background:linear-gradient(to left, #fff, transparent);}
-  .car-track{display:flex;gap:22px;width:max-content;animation:carScroll 70s linear infinite;}
-  .carousel:hover .car-track{animation-play-state:paused;}
-  @keyframes carScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  /* ---------- 专家滑动墙（默认静止，可手动横滑） ---------- */
+  .carousel{overflow-x:auto;overflow-y:hidden;position:relative;padding:8px 0 16px;
+    scrollbar-width:thin;scrollbar-color:var(--accent-soft) transparent;}
+  .carousel::-webkit-scrollbar{height:6px;}
+  .carousel::-webkit-scrollbar-track{background:transparent;}
+  .carousel::-webkit-scrollbar-thumb{background:var(--accent-soft);border-radius:999px;}
+  .car-track{display:flex;gap:22px;width:max-content;user-select:none;-webkit-user-select:none;}
+  .expert{cursor:grab;}
+  .expert .ph{pointer-events:none;}
   .expert{
     width:300px;flex-shrink:0;background:#fff;border:1px solid var(--line);
     border-radius:14px;overflow:hidden;transition:box-shadow .2s, transform .2s;
@@ -249,22 +248,6 @@
       <div class="expert"><img class="ph" src="photos/p14.jpg" alt="石运莹教授" loading="lazy"><div class="info"><div class="nm">石运莹 教授</div><div class="hp">四川大学华西医院 · 肾脏内科</div><div class="ti">肾脏内科专家</div></div></div>
       <div class="expert"><img class="ph" src="photos/p15.jpg" alt="李贵森教授" loading="lazy"><div class="info"><div class="nm">李贵森 教授</div><div class="hp">四川省人民医院</div><div class="ti">肾脏内科主任</div></div></div>
       <div class="expert"><img class="ph" src="photos/p13.jpg" alt="第壹现场栏目主持" loading="lazy"><div class="info"><div class="nm">第壹现场 · 栏目主持</div><div class="hp">2024 CSCO 学术年会（厦门）</div><div class="ti">担任大会现场访谈栏目主持人</div></div></div>
-      <!-- 第二组（复制用于无缝循环） -->
-      <div class="expert"><img class="ph" src="photos/p01.jpg" alt="" loading="lazy"><div class="info"><div class="nm">Luc Van Gaal 教授<span class="intl">国际</span></div><div class="hp">比利时</div><div class="ti">比利时内分泌学会与比利时糖尿病协会前任主席</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p02.jpg" alt="" loading="lazy"><div class="info"><div class="nm">Yehuda Handelsman 教授<span class="intl">国际</span></div><div class="hp">美国</div><div class="ti">美国临床内分泌医师协会与美国内分泌学会前任主席</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p03.jpg" alt="" loading="lazy"><div class="info"><div class="nm">母义明 教授</div><div class="hp">解放军总医院第一医学中心</div><div class="ti">中国医师协会内分泌代谢医师分会会长</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p04.jpg" alt="" loading="lazy"><div class="info"><div class="nm">蔡广研 教授</div><div class="hp">解放军总医院第一医学中心</div><div class="ti">中华医学会肾脏病学分会主任委员</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p05.jpg" alt="" loading="lazy"><div class="info"><div class="nm">蒋更如 教授</div><div class="hp">上海新华医院</div><div class="ti">中国医师协会肾脏内科医师分会副会长</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p06.jpg" alt="" loading="lazy"><div class="info"><div class="nm">刘必成 教授</div><div class="hp">东南大学附属中大医院 · 肾脏病研究所所长</div><div class="ti">中华医学会肾脏病学会副主任委员</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p07.jpg" alt="" loading="lazy"><div class="info"><div class="nm">林洪丽 教授</div><div class="hp">大连医科大学附属第一医院</div><div class="ti">中华医学会肾脏病学分会副主任委员</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p08.jpg" alt="" loading="lazy"><div class="info"><div class="nm">何娅妮 教授</div><div class="hp">陆军特色医学中心</div><div class="ti">中华医学会肾脏病学会副主任委员</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p09.jpg" alt="" loading="lazy"><div class="info"><div class="nm">刘铭 教授</div><div class="hp">天津医科大学总医院 · 内分泌代谢科</div><div class="ti">中华内分泌学会副主任委员</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p10.jpg" alt="" loading="lazy"><div class="info"><div class="nm">邹大进 教授</div><div class="hp">上海交通大学附属同仁医院 · 内分泌科</div><div class="ti">科普大咖</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p11.jpg" alt="" loading="lazy"><div class="info"><div class="nm">何志嵩 教授</div><div class="hp">北京大学第一医院</div><div class="ti">CSCO 尿路上皮癌（UC）专委会主任委员</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p12.jpg" alt="" loading="lazy"><div class="info"><div class="nm">崔传亮 教授</div><div class="hp">北京大学肿瘤医院</div><div class="ti">CSCO 尿路上皮癌（UC）专委会秘书</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p14.jpg" alt="" loading="lazy"><div class="info"><div class="nm">石运莹 教授</div><div class="hp">四川大学华西医院 · 肾脏内科</div><div class="ti">肾脏内科专家</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p15.jpg" alt="" loading="lazy"><div class="info"><div class="nm">李贵森 教授</div><div class="hp">四川省人民医院</div><div class="ti">肾脏内科主任</div></div></div>
-      <div class="expert"><img class="ph" src="photos/p13.jpg" alt="" loading="lazy"><div class="info"><div class="nm">第壹现场 · 栏目主持</div><div class="hp">2024 CSCO 学术年会（厦门）</div><div class="ti">担任大会现场访谈栏目主持人</div></div></div>
     </div>
   </div>
 </section>
@@ -527,6 +510,33 @@
   <div style="margin-top:10px">联系方式：<a href="mailto:wenxiu_0713@163.com" style="color:var(--accent);text-decoration:none">wenxiu_0713@163.com</a></div>
   <div class="pen-sign">—— 天之涯 ——</div>
 </footer>
+
+<script>
+(function () {
+  var track = document.getElementById('carTrack');
+  if (!track) return;
+  var box = track.parentElement; /* 滚动发生在 .carousel 上 */
+  var down = false, startX = 0, startLeft = 0, moved = false;
+  box.addEventListener('mousedown', function (e) {
+    down = true; moved = false;
+    startX = e.pageX; startLeft = box.scrollLeft;
+    box.classList.add('dragging');
+  });
+  window.addEventListener('mousemove', function (e) {
+    if (!down) return;
+    var dx = e.pageX - startX;
+    if (Math.abs(dx) > 4) moved = true;
+    box.scrollLeft = startLeft - dx;
+  });
+  window.addEventListener('mouseup', function () {
+    down = false; box.classList.remove('dragging');
+  });
+  /* 拖拽后避免误触发点击 */
+  track.addEventListener('click', function (e) {
+    if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+  }, true);
+})();
+</script>
 
 </body>
 </html>
